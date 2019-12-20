@@ -1,0 +1,114 @@
+.wrapper {
+position: relative;
+font-family: 'Inria Serif', serif;
+}
+
+.textsection {
+position: absolute;
+bottom: 100px;
+left: 60px;
+}
+
+
+.hero {
+   height: 100vh;
+   width: 100vw;
+   object-fit: cover;
+   /* filter: brightness(130%); */
+   filter: contrast(50%);
+
+}
+
+.heroheading {
+    color: #fff;
+    font-size: 4rem;
+    font-weight: 100;
+
+}
+
+.text {
+color: #fff;
+font-size: 1.4rem;
+margin-top: -1.5rem;
+
+}
+
+.button {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+
+}
+button span {
+    margin-left: 1rem;
+}
+
+.section {
+    background: #F1F1F5;
+    margin-top: -.5rem;
+    height: 20rem;
+    font-family: inherit;
+    
+}
+.quo {
+    font-size: 2rem;
+}
+.quote {
+    margin: 0;
+    font-weight: bold;
+    font-size: .8rem;
+    padding: 1.5rem;
+    line-height: 1rem;
+    color: #000;
+    font-family: inherit;
+}
+.citizen {
+    letter-spacing: .08rem;
+}
+.quotecontainer {
+    text-align: center;
+
+}
+.owner {
+    margin-top: -.5rem;
+    font-size: 1rem;
+    
+}
+
+.socialwrapper {
+    margin-left: 60rem;
+    margin-top: 3rem;
+}
+
+@media(max-width: 1024px) {
+    .socialwrapper {
+    margin-left: 30rem;
+    } 
+}
+@media(max-width: 768px) {
+    .socialwrapper {
+    margin-left: 10rem;
+    } 
+}
+
+.social {
+    text-align: center;
+    margin-left: -9rem;
+
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+.icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: #C1BEBE;
+    margin-right: 1rem;
+}
