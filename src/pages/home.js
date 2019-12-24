@@ -12,9 +12,118 @@ import smiling from '../images/smiling_man_720.png';
 import accident from '../images/Road-accidents.jpg';
 import guy from '../images/guy.jpg';
 import founder from '../images/founder.jpg';
+import Tooltip from '@material-ui/core/Tooltip';
+import Icon from '@material-ui/core/Icon';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import AttachFileIcon from '@material-ui/icons/AttachFile';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import  TextField  from '@material-ui/core/TextField';
+import CameraAltIcon from '@material-ui/icons/CameraAlt';
+import NoteAddIcon from '@material-ui/icons/NoteAdd';
+import PanoramaIcon from '@material-ui/icons/Panorama';
+import PersonIcon from '@material-ui/icons/Person';
+import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
+import DescriptionIcon from '@material-ui/icons/Description';
+import InfoIcon from '@material-ui/icons/Info';
+import SettingsIcon from '@material-ui/icons/Settings';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+// mui stuff
+
+
+
+
 
 class home extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            showReport: false,
+            open: false,
+            close: true,
+            openProfile: false
+            
+        }
+
+        this.handleClick = this.handleClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFile = this.handleFile.bind(this);
+        this.handleProfile = this.handleProfile.bind(this);
+    }
+    handleClick(event){
+        
+        console.log(event.target);
+        
+        this.setState(prevValue => {
+            return {
+                showReport: !prevValue.showReport
+               
+            }
+        })
+        console.log(this.state.showReport);
+    }
+
+    handleFile(event) {
+        this.setState(prevValue => {
+            return {
+                open: !prevValue.open,
+                close: !prevValue.close
+            }
+        })
+    }
+
+    handleProfile(){
+         this.setState(prevValue => {
+            return {
+                openProfile: !prevValue.openProfile,
+                close: !prevValue.close
+            }
+        })
+    }
+
+    handleChange(event) {
+        this.setState({ [event.target.name]: event.target.value });
+    }
+
+    handleSubmit() {
+        // get the textarea input and the everything in an object, 
+        // this is where you send a request
+        this.handleClose();
+    }
+
     render() {
+        let showMarkup = (
+               
+                // <textarea width="100vw"/>
+
+                
+            <div style={{ zIndex: "100", position: 'absolute', left: '5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', width: '40rem', background: '#F1F1F5' }}>
+                    <input type="checkbox" style={{ fontSize: '3rem' }} />
+                    <p style={{ fontFamily: 'lato' }}>Turn on Location</p>
+                </div>
+                                    
+                <textarea placeholder="Write your report here" style={{ position: 'absolute', left: '1rem' }} cols="100" rows="30" />
+                <Tooltip title="Add file">
+                    <AttachFileIcon style={{ position: 'absolute', right: '3rem', top: '25rem', color: '#bbb' }} onClick={this.handleFile}/>
+                   
+                </Tooltip>
+                <div style={{ display: 'flex', alignItems: 'center', background: '#F1F1F5', justifyContent: "space-around", padding: '1rem 0', marginTop: '24.5rem' }}>
+                    <button className={classes.btn} >Save</button>
+                    <button className={classes.btn}>Edit</button>
+                    <button className={classes.btn}>Delete</button>
+                    <button className={classes.btn}>Submit</button>
+
+                </div>
+
+            </div>
+
+        )
+    
         
         return (
             <div className={classes.first}>
@@ -24,15 +133,18 @@ class home extends Component {
                         <ul className={classes.list}>
                             <li className={classes.listitem}>Home</li>
                             <li className={classes.listitem}>Help</li>
-                            <li className={classes.listitem}>My Profile</li>
+                            <li className={classes.listitem} onClick={this.handleProfile}>My Profile</li>
                         </ul>
                         <ul className={classes.listicon}><li className={classes.listitem}>I-Witness</li></ul>
                     </nav>
                 </div>
+                
 
+              
+                
                 <section className={classes.buttonsection}>
                     <div className={classes.btncontent}>
-                        <button className={classes.btn}>Write a report</button>
+                        <button className={classes.btn} onClick={this.handleClick}>Write a report</button>
                         <button className={classes.btn}>Live Report</button>
                         <button className={classes.btn}>My Documents</button>
                         <button className={classes.btn}>More...</button>
@@ -40,6 +152,8 @@ class home extends Component {
                     </div>
 
                 </section>
+                {this.state.showReport ? showMarkup : null}
+
                 
                 <section className={classes.recent}>
                     <h3 className={classes.recenthead}>Your recent reports</h3>
@@ -57,7 +171,7 @@ class home extends Component {
                             <img className={classes.images} src={photofire} alt="" />
                             <p className={classes.date}>Sep 15th,2019</p>
                         </div>
-                        <span>&rarr;</span>
+                        {/* <span>&rarr;</span> */}
 
                     </div>
 
@@ -65,7 +179,7 @@ class home extends Component {
                 </section>
 
                 <section className={classes.customerservice}>
-                    <img style={{width: '400px', objectFit:'cover'}}clasName={classes.cserve} src={cs} alt="customerservice" />
+                    <img style={{width: '500px', objectFit:'cover'}}clasName={classes.cserve} src={cs} alt="customerservice" />
                     <div className={classes.operation}>
                         <div className={classes.intro}>
                             <h3 className={classes.here}>Here to help</h3>
@@ -79,6 +193,94 @@ class home extends Component {
                         
                     </div>
                 </section>
+                <Dialog
+                    open={this.state.open}
+                    onClose={this.state.handleClose}
+                    maxWidth="sm">
+                    <DialogTitle >Add a file</DialogTitle>
+                    <DialogContent className={classes.dialog} style={{ borderBottom: 'thin solid #eee', padding: '1rem' }}>
+                        <div style={{ display: 'flex' }}>
+                            <CameraAltIcon />
+                            <Typography style={{marginLeft: '.5rem'}}>Camera</Typography>
+                        </div>
+                    </DialogContent>
+                    <DialogContent className={classes.dialog} style={{ borderBottom: 'thin solid #eee', padding: '1rem'}}>
+                        <div style={{ display: 'flex' }} >
+                            <PanoramaIcon />
+                            <Typography style={{ marginLeft: '.5rem' }}>Picture/Video</Typography>
+                        </div>
+                    </DialogContent>
+                    <DialogContent className={classes.dialog} style={{ padding: '1rem'}}>
+                        <div style={{ display: 'flex' }} >
+                            <NoteAddIcon />
+                            <Typography style={{ marginLeft: '.5rem' }}>Documents</Typography>
+                        </div>
+                    </DialogContent>
+                    <DialogActions style={{margin: '0 auto'}}>
+                        <button onClick={this.handleFile} className={classes.btn}>Cancel</button>
+                        <button onClick={this.handleFile} className={classes.btn}>Save</button>
+
+                    </DialogActions>
+                </Dialog>
+
+{/* 2 */}
+
+                <Dialog
+                    open={this.state.openProfile}
+                    onClose={this.state.handleClose}
+                    maxWidth="sm">
+                    <img style={{height: '4rem', width: '4rem', borderRadius: '50%', objectFit: 'cover', margin: '0 auto', paddingTop: '.5rem'}} src={smiling}/>
+                    <DialogTitle style={{textAlign: 'center'}}>My Profile</DialogTitle>
+                    <DialogContent className={classes.dialog} style={{ borderBottom: 'thin solid #eee', padding: '1rem' }}>
+                        <div style={{ display: 'flex' }}>
+                            <PersonIcon />
+                            <Typography style={{ marginLeft: '.5rem' }}>Account Details</Typography>
+                        </div>
+                    </DialogContent>
+                    <DialogContent className={classes.dialog} style={{ borderBottom: 'thin solid #eee', padding: '1rem' }}>
+                        <div style={{ display: 'flex' }} >
+                            <NoteAddIcon />
+                            <Typography style={{ marginLeft: '.5rem' }}>My Reports</Typography>
+                        </div>
+                    </DialogContent>
+                    <DialogContent className={classes.dialog} style={{ padding: '1rem' }}>
+                        <div style={{ display: 'flex' }} >
+                            <NotificationsActiveIcon />
+                            <Typography style={{ marginLeft: '.5rem' }}>Notifications</Typography>
+                        </div>
+                    </DialogContent>
+                    <DialogContent className={classes.dialog} style={{ padding: '1rem', borderBottom: 'thin solid #eee' }}>
+                        <div style={{ display: 'flex' }} >
+                            <DescriptionIcon />
+                            <Typography className={classes.dialog} style={{ marginLeft: '.5rem' }}>T&Cs</Typography>
+                        </div>
+                    </DialogContent>
+                    <DialogContent className={classes.dialog} style={{ padding: '1rem', borderBottom: 'thin solid #eee' }}>
+                        <div style={{ display: 'flex' }} >
+                            <InfoIcon />
+                            <Typography className={classes.dialog} style={{ marginLeft: '.5rem' }}>About App</Typography>
+                        </div>
+                    </DialogContent>
+                    <DialogContent className={classes.dialog} style={{ padding: '1rem', borderBottom: 'thin solid #eee' }}>
+                        <div style={{ display: 'flex' }} >
+                            <SettingsIcon />
+                            <Typography className={classes.dialog} style={{ marginLeft: '.5rem' }}>Settings</Typography>
+                        </div>
+                    </DialogContent>
+                    <DialogContent className={classes.dialog} style={{ padding: '1rem' }}>
+                        <div style={{ display: 'flex' }} >
+                            <ExitToAppIcon />
+                            <Typography className={classes.dialog} style={{ marginLeft: '.5rem' }}>Sign Out</Typography>
+                        </div>
+                    </DialogContent>
+                    <DialogActions style={{ margin: '0 auto' }}>
+                        <button onClick={this.handleProfile} className={classes.btn}>Cancel</button>
+                        <button onClick={this.handleProfile} className={classes.btn}>Save</button>
+
+                    </DialogActions>
+                </Dialog>
+
+
 
                 <section className={classes.aboutus}>
                     <h2 className={classes.ab}>About Us</h2>
@@ -110,34 +312,38 @@ class home extends Component {
                 </section>
 
                 <section className={classes.reviews}>
-                    <div className={classes.review}>
-                        <img src={guy} alt="" />
-                        <p className={classes.comment}>It has helped in saving so many lives including some of my friends and it's exciting how far they've  come.</p>
-                        <p className={classes.name}>Alan Jones</p>
-                        <p className={classes.work}>Sun Newspaper</p>
-                    </div>
+                    <h3 className={classes.rev}>Reviews</h3>
+                    <div className={classes.reviewswrapper}>
+                        <div className={classes.review}>
+                            <img className={classes.images} src={guy} alt="" />
+                            <p className={classes.comment}>It has helped in saving so many lives including some of my friends and it's exciting how far they've  come.</p>
+                            <p className={classes.name}>Alan Jones</p>
+                            <p className={classes.work}>Sun Newspaper</p>
+                        </div>
 
-                    <div className={classes.review}>
-                        <img src={darkgirl} alt="" />
-                        <p className={classes.comment}>It's exciting what this app has done for me.I feel lucky to be alive at such a time to witness this movement</p>
-                        <p className={classes.name}>Tania Davis</p>
-                        <p className={classes.work}>Punch Newspaper</p>
-                    </div>
+                        <div className={classes.review}>
+                            <img className={classes.images} src={darkgirl} alt="" />
+                            <p className={classes.comment}>It's exciting what this app has done for me.I feel lucky to be alive at such a time to witness this movement</p>
+                            <p className={classes.name}>Tania Davis</p>
+                            <p className={classes.work}>Punch Newspaper</p>
+                        </div>
 
-                    <div className={classes.review}>
-                        <img src={smiling} alt="" />
-                        <p className={classes.comment}>I've been part of this from inception and i'm always ecstatic when i tell people I;m part of the I-Witness family</p>
-                        <p className={classes.name}>Dave Hades</p>
-                        <p className={classes.work}>I-Witness Editor</p>
+                        <div className={classes.review}>
+                            <img className={classes.images} src={smiling} alt="" />
+                            <p className={classes.comment}>I've been part of this from inception and i'm always ecstatic when i tell people I;m part of the I-Witness family</p>
+                            <p className={classes.name}>Dave Hades</p>
+                            <p className={classes.work}>I-Witness Editor</p>
+                        </div>
                     </div>
+                
                 </section>
 
                 <section className={classes.founder}>
-                    <img src={founder} alt="" />
+                    <div className={classes.foundimage} src={founder}></div>
                     <div className={classes.bio}>
                         <p className={classes.bioname}>Tolani Ojo</p>
                         <p className={classes.title}>Founder</p>
-                        <p className={classes.speech}>Growing upmin Nigeria had it's advantages and disadvantages and one of it's disadvantages was the issue of emergencies with no one to report to or stand as a witness even though we had the police and that's where this idea was gotten from. We've been able to use this platform to help millions of ppeople through submitted reports by others and it's been a good ride so far.</p>
+                        <p className={classes.speech}>Growing up in Nigeria had it's advantages and disadvantages and one of it's disadvantages was the issue of emergencies with no one to report to or stand as a witness even though we had the police and that's where this idea was gotten from. We've been able to use this platform to help millions of ppeople through submitted reports by others and it's been a good ride so far.</p>
 
                     </div>
                 </section>
@@ -178,7 +384,7 @@ class home extends Component {
                         <div className={classes.sub}>
                             <p className={classes.newsletter}>Subscribe to our Newsletter</p>
                             <div className={classes.input}>
-                                <input type="email" className={classes.email}/>
+                                <input type="email" className={classes.email} placeholder="your email"/>
                                 <button className={classes.submit}>Submit</button>
                             </div>
                         </div>
@@ -186,7 +392,6 @@ class home extends Component {
 
                     </div>
 
-                    <p className={classes.copy}>Copyright &copy; 2019 I-Witness.All Rights Reserved</p>
 
 
 
@@ -194,6 +399,8 @@ class home extends Component {
 
 
                 </footer>
+
+                <p className={classes.copy}>Copyright &copy; 2019 I-Witness.All Rights Reserved</p>
 
 
 
