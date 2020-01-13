@@ -131,9 +131,18 @@ class home extends Component {
                     <img className={classes.hero} src={reporter} />
                     <nav className={classes.nav}>
                         <ul className={classes.list}>
-                            <li className={classes.listitem}>Home</li>
-                            <li className={classes.listitem}>Help</li>
-                            <li className={classes.listitem} onClick={this.handleProfile}>My Profile</li>
+                            <Tooltip title="Home">
+                            
+                                <li className={classes.listitem}>Home</li>
+                            </Tooltip>
+                            <Tooltip title="Help">
+                            
+                                <li className={classes.listitem}>Help</li>
+                            </Tooltip>
+                            <Tooltip title="My Profile">
+
+                                <li className={classes.listitem} onClick={this.handleProfile}>My Profile</li>
+                            </Tooltip> 
                         </ul>
                         <ul className={classes.listicon}><li className={classes.listitem}>I-Witness</li></ul>
                     </nav>

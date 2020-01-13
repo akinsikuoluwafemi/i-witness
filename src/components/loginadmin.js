@@ -24,6 +24,7 @@ class Login extends Component {
         this.state = {
             email: '',
             password: '',
+            adminid: '',
             loading: false,
             errors: {}
         }
@@ -62,6 +63,10 @@ class Login extends Component {
                             <div className={classes.inputwrapper}>
                                 <LockOutlinedIcon />
                                 <input type="email" onChange={this.handleChange} value={this.state.email} />
+                            </div>
+                            <div className={classes.inputwrapper}>
+                                <Typography>Adminid</Typography>
+                                <input type="email" onChange={this.handleChange} value={this.state.adminid} />
                             </div>
                             <small>Forget Password click here</small> <br/>
                             <button>Login</button>

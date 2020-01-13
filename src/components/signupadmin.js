@@ -7,7 +7,7 @@ import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Button from '@material-ui/core/Button';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
-    
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import Link from 'react-router-dom';
 // mui stuff
 import Grid from '@material-ui/core/Grid';
@@ -25,19 +25,23 @@ class Login extends Component {
             email: '',
             password: '',
             username: '',
+            adminId: '',
             loading: false,
             errors: {}
         }
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+
     }
 
-    handleChange= (event) => {
+    handleChange (event){
         this.setState({
             [event.target.name]: event.target.value
         });
     }
     
 
-    handleSubmit= (event) => {
+    handleSubmit (event) {
         console.log('hi')
     }
 
@@ -49,33 +53,37 @@ class Login extends Component {
                 <img className={classes.hero} src={heroimage} />
                 <Grid container className={classes.form} style={{position: 'absolute', top: '0rem'}}>
                     <Grid item sm>
-                        <button>Admin</button>
+                        <button className={classes.btninfo}>Not Admin</button>
                     
                     </Grid>
-                    <Grid item sm>
+                    <Grid item sm >
                         <h1 className={classes.head}>I-Witness</h1>
                         <form noValidate onSubmit={this.handleSubmit}>
                             <div className={classes.inputwrapper}>
                                 <EmailOutlinedIcon/>
-                                <input type="email" onChange={this.handleChange} value={this.state.email} />
+                                <input className={classes.field} type="email" onChange={this.handleChange} value={this.state.email} placeholder="Your email" name="email"/>
                             </div>
                             <div className={classes.inputwrapper}>
                                 <PersonOutlineIcon />
-                                <input type="text" onChange={this.handleChange} value={this.state.username} />
+                                <input className={classes.field} type="text" onChange={this.handleChange} value={this.state.username} placeholder="Your username"/>
                             </div>
 
                             <div className={classes.inputwrapper}>
                                 <LockOutlinedIcon />
-                                <input type="password" onChange={this.handleChange} value={this.state.password} />
+                                <input className={classes.field} type="password" onChange={this.handleChange} value={this.state.password} placeholder="Your password" name="password"/>
                             </div>
-                            <small>Forget Password click here</small> <br/>
-                            <button>Login</button>
+                            <div className={classes.adminwrapper}>
+                                <SupervisorAccountIcon/>
+                                <input className={classes.field} type="password" onChange={this.handleChange} value={this.state.adminId} placeholder="123000"/>
+                            </div>
+                            <small className={classes.small}>Forget Password click here</small> <br/>
+                            <button className={classes.btninfo}>Login</button>
 
                         </form>
                     </Grid>
                     <Grid item sm >
                         <Typography>No Account?</Typography>
-                        <button>Signup</button>
+                        <button className={classes.btninfo}>Signup</button>
 
                         
                     </Grid>
