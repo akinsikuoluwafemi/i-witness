@@ -12,7 +12,7 @@ function App() {
       {/* <SignupAdmin/> */}
       {/* <Login/> */}
       {/* <Home/> */}
-      <Landingpage/>
+      <Landingpage/> 
     </div>
   );
 }
