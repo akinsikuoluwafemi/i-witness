@@ -3,12 +3,12 @@ import './App.css';
 import Login from './components/login';
 import Landingpage from './pages/landingpage';
 import Home from './pages/home';
-import SignupAdmin from './components/signupadmin'
+import SignupAdmin from './components/signupadmin';
 
 
 function App() {
   return (
-    <div >
+    <div>
       {/* <SignupAdmin/> */}
       {/* <Login/> */}
       {/* <Home/> */}
@@ -18,3 +18,4 @@ function App() {
 }
 
 export default App;
+
