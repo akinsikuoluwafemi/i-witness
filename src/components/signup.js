@@ -8,12 +8,12 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Button from '@material-ui/core/Button';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
     
-import Link from 'react-router-dom';
+import Link from 'react-router-dom/Link';
 // mui stuff
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-
+import Header from '../components/Header';
 
 
 
@@ -24,9 +24,8 @@ class Login extends Component {
         this.state = {
             email: '',
             password: '',
-            username: '',
-            loading: false,
-            errors: {}
+            username: ''
+            
         }
     }
 
@@ -39,43 +38,53 @@ class Login extends Component {
 
     handleSubmit= (event) => {
         console.log('hi')
+        event.preventDefault();
     }
 
     render(){
         
         
         return (
+
             <div className={classes.wrapper}>
-                <img className={classes.hero} src={heroimage} />
-                <Grid container className={classes.form} style={{position: 'absolute', top: '0rem'}}>
+                <Header image={heroimage}/>
+                {/* <img className={classes.hero} src={heroimage} /> */}
+                <Grid container className={classes.form} style={{position: 'absolute', top: '10rem'}}>
                     <Grid item sm>
-                        <button>Admin</button>
+                        <button className="ui button">Admin</button>
                     
                     </Grid>
                     <Grid item sm>
-                        <h1 className={classes.head}>I-Witness</h1>
-                        <form noValidate onSubmit={this.handleSubmit}>
+                        {/* <h1 className={classes.head}>I-Witness</h1> */}
+                        <form noValidate onSubmit={this.handleSubmit} >
+                            
                             <div className={classes.inputwrapper}>
-                                <EmailOutlinedIcon/>
-                                <input type="email" onChange={this.handleChange} value={this.state.email} />
-                            </div>
-                            <div className={classes.inputwrapper}>
-                                <PersonOutlineIcon />
-                                <input type="text" onChange={this.handleChange} value={this.state.username} />
+                                <EmailOutlinedIcon style={{ fontSize: '2rem', display: 'inline', position: 'absolute', top: '1.7rem', }} />
+                                <input type="email" onChange={this.handleChange} name="email" value={this.state.email} placeholder="Email" style={{ textIndent: '2rem', background: '#ddd', padding: '1rem', borderRadius: '8px', width: '300px' }} />
                             </div>
 
                             <div className={classes.inputwrapper}>
-                                <LockOutlinedIcon />
-                                <input type="password" onChange={this.handleChange} value={this.state.password} />
+                                <LockOutlinedIcon style={{ fontSize: '2rem', display: 'inline', position: 'absolute', top: '6rem', }} />
+                                <input type="password" name="password" onChange={this.handleChange} value={this.state.password} placeholder="Password" style={{ textIndent: '2rem', background: '#ddd', padding: '1rem', borderRadius: '8px', width: '300px' }} />
                             </div>
-                            <small>Forget Password click here</small> <br/>
-                            <button>Login</button>
+
+                            <div className={classes.inputwrapper}>
+                                <PersonOutlineIcon style={{ fontSize: '2rem', display: 'inline', position: 'absolute', top: '10.5rem', }} />
+                                <input name="username" type="text" onChange={this.handleChange} value={this.state.username} placeholder="Username" style={{ textIndent: '2rem', background: '#ddd', padding: '1rem', borderRadius: '8px', width: '300px' }} />
+                            </div>
+
+                                
+                            
+
+                            <Link to="" style={{color: 'white'}}>Forget Password click here</Link> <br/>
+                            <button className="ui button green">Login</button>
+                            <Typography style={{ color: 'white' }}>Already have an account</Typography>
+                            <Link to="/login" style={{ color: 'white' }}>Login</Link>
 
                         </form>
                     </Grid>
                     <Grid item sm >
-                        <Typography>No Account?</Typography>
-                        <button>Signup</button>
+                        
 
                         
                     </Grid>

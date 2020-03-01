@@ -1,18 +1,14 @@
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import Navigation from './pages/Navigation';
 import React from 'react';
 import './App.css';
-import Login from './components/login';
-import Landingpage from './pages/landingpage';
-import Home from './pages/home';
-import SignupAdmin from './components/signupadmin';
+
 
 
 function App() {
   return (
     <div>
-      {/* <SignupAdmin/> */}
-      {/* <Login/> */}
-      {/* <Home/> */}
-      <Landingpage/> 
+      <Navigation/>
     </div>
   );
 }

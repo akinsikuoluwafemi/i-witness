@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import classes from './home.module.css';
-import reporter from '../images/female_reporter2.jpg';
 import road from '../images/road_em_.jpg';
 import photofire from '../images/photo-fire.jpg'
 import lasema from '../images/lasema_emergency.jpg';
@@ -31,6 +30,9 @@ import DescriptionIcon from '@material-ui/icons/Description';
 import InfoIcon from '@material-ui/icons/Info';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import Link from 'react-router-dom/Link';
+import Header from '../components/Header';
+import femaleReporter from '../images/female_reporter2.jpg';
 // mui stuff
 
 
@@ -127,36 +129,16 @@ class home extends Component {
         
         return (
             <div className={classes.first}>
-                <div className={classes.wraper}>
-                    <img className={classes.hero} src={reporter} />
-                    <nav className={classes.nav}>
-                        <ul className={classes.list}>
-                            <Tooltip title="Home">
-                            
-                                <li className={classes.listitem}>Home</li>
-                            </Tooltip>
-                            <Tooltip title="Help">
-                            
-                                <li className={classes.listitem}>Help</li>
-                            </Tooltip>
-                            <Tooltip title="My Profile">
-
-                                <li className={classes.listitem} onClick={this.handleProfile}>My Profile</li>
-                            </Tooltip> 
-                        </ul>
-                        <ul className={classes.listicon}><li className={classes.listitem}>I-Witness</li></ul>
-                    </nav>
-                </div>
                 
-
+                
+                <Header image={femaleReporter}/>
               
                 
                 <section className={classes.buttonsection}>
                     <div className={classes.btncontent}>
                         <button className={classes.btn} onClick={this.handleClick}>Write a report</button>
-                        <button className={classes.btn}>Live Report</button>
-                        <button className={classes.btn}>My Documents</button>
-                        <button className={classes.btn}>More...</button>
+                        <button className={classes.btn}>Live Reports</button>
+                        <button className={classes.btn}>All Reports</button>
 
                     </div>
 

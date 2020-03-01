@@ -40,7 +40,8 @@ font-family: 'Inria Serif', serif;
 .inputwrapper {
     /* display: flex; */
     /* align-items: center; */
-    padding: .4rem;
+    /* padding: .4rem; */
+    margin-top: 1rem;
     
 }
 
@@ -56,3 +57,9 @@ font-family: 'Inria Serif', serif;
 .adminIdField {
 
 }
+
+
+
+/* input */
+
+

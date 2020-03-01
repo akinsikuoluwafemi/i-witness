@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './landing.module.css'; 
 import heroimage from '../images/background_for_e-report.jpg'
+import Link from 'react-router-dom/Link';
  function landingpage() {
     return (
         <div>
@@ -9,7 +10,7 @@ import heroimage from '../images/background_for_e-report.jpg'
                 <div className={classes.textsection}>
                     <h1 className={classes.heroheading}>I-Witness</h1>
                     <p className={classes.text}>Connecting you to the world around you <br/> one report at a time</p>
-                    <button className={classes.button}>Explore <span>&rarr;</span></button>
+                    <Link to="/signup"><button className={classes.button}>Explore <span>&rarr;</span></button></Link>
                 </div>
                
             </div>
