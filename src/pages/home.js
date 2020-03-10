@@ -33,6 +33,8 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Link from 'react-router-dom/Link';
 import Header from '../components/Header';
 import femaleReporter from '../images/female_reporter2.jpg';
+import GoogleAuth from '../components/GoogleAuth';
+import { connect } from 'react-redux';
 // mui stuff
 
 
@@ -46,7 +48,8 @@ class home extends Component {
             showReport: false,
             open: false,
             close: true,
-            openProfile: false
+            openProfile: false,
+            source: null
             
         }
 
@@ -79,6 +82,7 @@ class home extends Component {
     }
 
     handleProfile(){
+        console.log('no')
          this.setState(prevValue => {
             return {
                 openProfile: !prevValue.openProfile,
@@ -96,6 +100,28 @@ class home extends Component {
         // this is where you send a request
         this.handleClose();
     }
+
+
+
+
+    handleCapture = () =>{
+    navigator.mediaDevices.getUserMedia({video: true, audio: true})
+      .then(this.handleVideo)
+      .catch(this.videoError)
+  }
+
+  handleVideo = (stream) => {
+      console.log(stream)
+    this.setState({
+      source: window.URL.createObjectURL(stream)
+    })
+  }
+
+  videoError = (err) => {
+    alert(err.name)
+  }
+
+
 
     render() {
         let showMarkup = (
@@ -131,13 +157,14 @@ class home extends Component {
             <div className={classes.first}>
                 
                 
-                <Header image={femaleReporter}/>
-              
+                <Header image={femaleReporter} onClick={this.handleProfile} nav="SignOut"/>
+                {/* <video id="video-chat" src={this.state.source} autoPlay="true">
+                </video> */}
                 
                 <section className={classes.buttonsection}>
                     <div className={classes.btncontent}>
-                        <button className={classes.btn} onClick={this.handleClick}>Write a report</button>
-                        <button className={classes.btn}>Live Reports</button>
+                        <Link to="/reports/new"><button className={classes.btn} onClick={this.handleClick}>Write a report</button></Link>
+                        <button className={classes.btn} onClick={this.handleCapture}>Live Reports</button>
                         <button className={classes.btn}>All Reports</button>
 
                     </div>
@@ -184,7 +211,7 @@ class home extends Component {
                         
                     </div>
                 </section>
-                <Dialog
+                <Dialog 
                     open={this.state.open}
                     onClose={this.state.handleClose}
                     maxWidth="sm">
@@ -402,4 +429,13 @@ class home extends Component {
     }
 }
 
-export default home;
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+        isSignedIn: state.auth.isSignedIn
+    }
+}
+
+
+
+export default connect(mapStateToProps)(home);

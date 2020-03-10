@@ -10,7 +10,7 @@ import Link from 'react-router-dom/Link';
                 <div className={classes.textsection}>
                     <h1 className={classes.heroheading}>I-Witness</h1>
                     <p className={classes.text}>Connecting you to the world around you <br/> one report at a time</p>
-                    <Link to="/signup"><button className={classes.button}>Explore <span>&rarr;</span></button></Link>
+                    <Link to="/login"><button className={classes.button}>Explore <span>&rarr;</span></button></Link>
                 </div>
                
             </div>
