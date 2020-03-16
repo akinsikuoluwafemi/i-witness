@@ -18,7 +18,9 @@ class ReportList extends Component {
                 <div className="right floated content">
                     <Link className="ui button primary" to={`/reports/edit/${report.id}`}>Edit</Link>
 
-                    <button className="ui button negative">DELETE</button>
+                    <Link to={`/reports/delete/${report.id}`} className="ui button negative">
+                        DELETE
+                    </Link>
 
                 </div>
             )

@@ -29,7 +29,7 @@ const Navigation = () => {
 
                 <Route path="/reports/new" exact component={ReportCreate} />
                 <Route path="/reports/edit/:id" exact component={ReportEdit} />
-                <Route path="/reports/delete" exact component={ReportDelete} />
+                <Route path="/reports/delete/:id" exact component={ReportDelete} />
                 <Route path="/reports/list" exact component={ReportList} />
                 <Route path="/reports/show" exact component={ReportShow} />
 

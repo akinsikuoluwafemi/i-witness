@@ -86,6 +86,7 @@ export const deleteReport =(id) => async dispatch => {
     await reports.delete(`/reports/${id}`);
 
     dispatch({ type: DELETE_REPORT, payload: id });
+    history.push('/reports/list');
 
 }
 

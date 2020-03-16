@@ -92,7 +92,6 @@ const formWrapped =  reduxForm({
 })(ReportForm);
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         location: state.auth.location,
         isSignedIn: state.auth.isSignedIn,
