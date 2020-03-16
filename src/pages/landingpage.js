@@ -2,9 +2,11 @@ import React from 'react';
 import classes from './landing.module.css'; 
 import heroimage from '../images/background_for_e-report.jpg'
 import Link from 'react-router-dom/Link';
+
  function landingpage() {
     return (
         <div>
+
             <div className={classes.wrapper}>
                 <img className={classes.hero} src={heroimage} />
                 <div className={classes.textsection}>

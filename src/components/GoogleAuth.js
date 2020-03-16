@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { signIn, signOut } from '../actions';
 import history from '../history';
+
 class GoogleAuth extends React.Component{
     
     componentDidMount(){
@@ -22,6 +23,9 @@ class GoogleAuth extends React.Component{
         if(isSignedIn){
             this.props.signIn(this.auth.currentUser.get().getId());
             console.log(this.props)
+            // history.push('/home');
+
+
 
         }else {
             this.props.signOut();
@@ -39,7 +43,7 @@ class GoogleAuth extends React.Component{
     onSignOutClick = () => {
         this.auth.signOut();
         console.log(this.props)
-    
+
     }
 
     renderAuthButton(){
