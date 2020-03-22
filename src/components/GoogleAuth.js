@@ -4,7 +4,9 @@ import { signIn, signOut } from '../actions';
 import history from '../history';
 
 class GoogleAuth extends React.Component{
-    
+    constructor(props){
+       super(props) 
+    }
     componentDidMount(){
         window.gapi.load('client:auth2', () => {
             window.gapi.client.init({
@@ -61,7 +63,7 @@ class GoogleAuth extends React.Component{
             return (
                 <button onClick={this.onSignInClick} className="ui red google button">
                     <i className="google icon" />
-                    Sign In With Google
+                    {this.props.text} With Google
                 </button>
             )
             

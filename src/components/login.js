@@ -15,7 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Header from '../components/Header';
 import GoogleAuth from './GoogleAuth';
-
+import history from '../history';
 
 
 class Login extends Component {
@@ -35,9 +35,19 @@ class Login extends Component {
     }
     
 
+   checkSubmit=()=> {
+        if(this.state.email == '' && this.state.password == ''){
+            alert('pls fill in the fields')
+        }else {
+            history.push('/home')
+            
+        }
+    }
+
     handleSubmit= (event) => {
         console.log('hi')
         event.preventDefault();
+        this.checkSubmit()
     }
 
     render(){
@@ -61,12 +71,12 @@ class Login extends Component {
                         <form noValidate onSubmit={this.handleSubmit} >
                             <div className={classes.inputwrapper}>
                                 <EmailOutlinedIcon style={{fontSize: '2rem', display: 'inline', position: 'absolute', top: '1.7rem', }} />
-                                <input name="email" type="email" onChange={this.handleChange} value={this.state.email} placeholder="Email" style={{textIndent: '2rem', background: '#ddd', padding: '1rem', borderRadius: '8px', width: '300px'}}/>
+                                <input name="email" type="email" onChange={this.handleChange} value={this.state.email} placeholder="Email" style={{textIndent: '2rem', background: '#ddd', padding: '1rem', borderRadius: '8px', width: '300px'}} required/>
                             </div>
                             
                             <div className={classes.inputwrapper}>
                                 <LockOutlinedIcon style={{ fontSize: '2rem', display: 'inline', position: 'absolute', top: '6rem', }} />
-                                <input name="password" type="password" onChange={this.handleChange} value={this.state.password} placeholder="Password" style={{ textIndent: '2rem', background: '#ddd', padding: '1rem', borderRadius: '8px', width: '300px' }} />
+                                <input name="password" type="password" onChange={this.handleChange} value={this.state.password} placeholder="Password" style={{ textIndent: '2rem', background: '#ddd', padding: '1rem', borderRadius: '8px', width: '300px' }} required/>
                             </div>
                             
 
@@ -78,7 +88,7 @@ class Login extends Component {
 
                         </form>
 
-                        <GoogleAuth />
+                        <GoogleAuth text="Login" />
                         
                     </Grid>
                     <Grid item sm >

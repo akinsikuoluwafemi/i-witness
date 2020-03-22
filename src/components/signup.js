@@ -14,8 +14,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Header from '../components/Header';
-
-
+import history from '../history';
+import GoogleAuth from '../components/GoogleAuth';
 
 
 class Login extends Component {
@@ -35,10 +35,19 @@ class Login extends Component {
         });
     }
     
+    checkSubmit=()=> {
+        if(this.state.email == '' && this.state.password == '' & this.state.username == ''){
+            alert('pls fill in the fields')
+        }else {
+            history.push('/home')
+            
+        }
+    }
 
     handleSubmit= (event) => {
         console.log('hi')
         event.preventDefault();
+        this.checkSubmit()
     }
 
     render(){
@@ -60,28 +69,31 @@ class Login extends Component {
                             
                             <div className={classes.inputwrapper}>
                                 <EmailOutlinedIcon style={{ fontSize: '2rem', display: 'inline', position: 'absolute', top: '1.7rem', }} />
-                                <input type="email" onChange={this.handleChange} name="email" value={this.state.email} placeholder="Email" style={{ textIndent: '2rem', background: '#ddd', padding: '1rem', borderRadius: '8px', width: '300px' }} />
+                                <input required type="email" onChange={this.handleChange} name="email" value={this.state.email} placeholder="Email" style={{ textIndent: '2rem', background: '#ddd', padding: '1rem', borderRadius: '8px', width: '300px' }} />
                             </div>
 
                             <div className={classes.inputwrapper}>
                                 <LockOutlinedIcon style={{ fontSize: '2rem', display: 'inline', position: 'absolute', top: '6rem', }} />
-                                <input type="password" name="password" onChange={this.handleChange} value={this.state.password} placeholder="Password" style={{ textIndent: '2rem', background: '#ddd', padding: '1rem', borderRadius: '8px', width: '300px' }} />
+                                <input required type="password" name="password" onChange={this.handleChange} value={this.state.password} placeholder="Password" style={{ textIndent: '2rem', background: '#ddd', padding: '1rem', borderRadius: '8px', width: '300px' }} />
                             </div>
 
                             <div className={classes.inputwrapper}>
                                 <PersonOutlineIcon style={{ fontSize: '2rem', display: 'inline', position: 'absolute', top: '10.5rem', }} />
-                                <input name="username" type="text" onChange={this.handleChange} value={this.state.username} placeholder="Username" style={{ textIndent: '2rem', background: '#ddd', padding: '1rem', borderRadius: '8px', width: '300px' }} />
+                                <input required name="username" type="text" onChange={this.handleChange} value={this.state.username} placeholder="Username" style={{ textIndent: '2rem', background: '#ddd', padding: '1rem', borderRadius: '8px', width: '300px' }} />
                             </div>
 
                                 
                             
 
                             <Link to="" style={{color: 'white'}}>Forget Password click here</Link> <br/>
-                            <button className="ui button green">Login</button>
+                            <button className="ui button green">Signup</button>
                             <Typography style={{ color: 'white' }}>Already have an account</Typography>
                             <Link to="/login" style={{ color: 'white' }}>Login</Link>
 
                         </form>
+
+                        <GoogleAuth text="Signin" />
+
                     </Grid>
                     <Grid item sm >
                         

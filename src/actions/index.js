@@ -25,7 +25,7 @@ import
 export const signIn = (userId) => async (dispatch, getState)=> {
     
     dispatch({ type: SIGN_IN, payload: userId });
-    history.push('/home');
+    // history.push('/home');
 };
 
 
@@ -39,7 +39,7 @@ export const signIn = (userId) => async (dispatch, getState)=> {
 export const signOut = () => async (dispatch, getState)=> {
     
     dispatch({ type: SIGN_OUT });
-    history.push('/');
+    // history.push('/');
 };
 
 

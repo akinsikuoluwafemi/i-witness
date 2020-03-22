@@ -165,7 +165,7 @@ class home extends Component {
                     <div className={classes.btncontent}>
                         <Link to="/reports/new"><button className={classes.btn} onClick={this.handleClick}>Write a report</button></Link>
                         <button className={classes.btn} onClick={this.handleCapture}>Live Reports</button>
-                        <Link to="/reports/list" className={classes.btn} >All Reports</Link>
+                        <Link to="/reports/list" className={classes.btn}>All Reports</Link>
 
                     </div>
 
