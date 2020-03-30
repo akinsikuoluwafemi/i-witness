@@ -419,6 +419,8 @@ class home extends Component {
                 </footer>
 
                 <p className={classes.copy}>Copyright &copy; 2019 I-Witness.All Rights Reserved</p>
+                <p className={classes.copy}> Made by Femi (+2348103031691)</p>
+
 
 
 
